@@ -39,12 +39,12 @@ const IndexPage = ({data}) =>  {
     display: block;
     margin: 0 auto .5vw;
     fill:white;
-    transition: fill 1s;
+    transition: fill 5s;
     
     `
   const Older = css `
     :hover {
-      fill:pink;
+      fill:DarkRed;
       animation: Shake 0.82s cubic-bezier(.36,.07,.19,.97) infinite;
     
     }
