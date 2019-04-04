@@ -14,7 +14,7 @@ body > div, body > div > div {
   height: 100%;
 }
 * {
-  font-family: sans;
+  font-family: "open sans", sans;
 }
 article,
 aside,
@@ -622,6 +622,40 @@ pre code:after,
 pre tt:before,
 pre tt:after {
   content: "";
+}
+@keyframes Shake {
+  10%, 90% {
+    transform: translate(-1px, 2px);
+  }
+  
+  20%, 80% {
+    transform: translate(2px, 0);
+  }
+
+  30%, 50%, 70% {
+    transform: translate(-4px, -3px);
+  }
+
+  40%, 60% {
+    transform: translate(4px, 2px);
+  }
+}
+@keyframes Bounce {
+from, 20%, 53%, 80%, to {
+  transform: translate3d(0,0,0)  scale(1.1, .9);
+}
+
+40%, 43% {
+  transform: translate3d(0, -30px, 0)  scale(.8, 1.1);
+}
+
+70% {
+  transform: translate3d(0, -7px, 0)  scale(1.05, .9);
+}
+
+90% {
+  transform: translate3d(0,-2px,0) scale(1.1, .9);
+}
 }
 @media only screen and (max-width: 480px) {
   html {

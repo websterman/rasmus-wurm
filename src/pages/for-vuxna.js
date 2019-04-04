@@ -14,6 +14,7 @@ color: white;
     align-items: center;
     
 `;
+
 const IntroBox = styled.div `
     background-image: url(${curtains});
     height: 0;
@@ -24,32 +25,36 @@ const IntroBox = styled.div `
 
 `;
 const IntroText = styled.div `
-color: white;
-text-align: center;
-position: absolute;
-top: 50%;
-left: 50%;
-transform: translate(-50%, -50%);`
+    color: white;
+    text-align: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);`;
+
 const Row = styled.div `
-position: relative;
-display: flex;
-align-items: stretch;
-`;
+    position: relative;
+    display: flex;
+    align-items: stretch;
+    `;
 
 const ImgBox = styled.div `
 `;
+
 const OrderLeft = css `
-order: 1;
-width: 50%;`
+    order: 1;
+    width: 50%;`
+
 const OrderRight = css `
-order: 2;
-width: 50%;
+    order: 2;
+    width: 50%;
 `
 const AdultImg = styled.img `
-width: 100%;
-margin: 0;
-display: block;`;
-const ForAdults = ({ data }) => {
+    width: 100%;
+    margin: 0;
+    display: block;`;
+
+    const ForAdults = ({ data }) => {
     console.log(data.wordpressPage)
   return (
     <div>
