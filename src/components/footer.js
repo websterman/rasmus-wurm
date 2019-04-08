@@ -16,14 +16,25 @@ const StyledFooter = styled.div`
   }
   > div > *, > form  button, > form label {
     color: #93278f;
-    font-family: 'Open sans', sans;
+    font-family: 'roboto', sans;
   }
-  > form 
+  > form button {
+    margin: 10px 0 0;
+    border: 1px solid #93278f;
+  }
+  > form div {
+    width: 100%;
+  }
+  > div > p {
+    margin: 20px 0;
+  } 
 `;
 const Footer = ({ siteTitle }) => (
   
   <StyledFooter> 
-    <div><Typography  variant="h4">Rasmus Wurm</Typography>
+    <div><Typography variant="h4">Rasmus Wurm</Typography>
+    <Typography variant ="p">+46 70 398 09 82</Typography>
+    <a href="mailto:info@rasmuswurm.se"><Typography variant="p">info@rasmuswurm.se</Typography></a>
     <h3></h3>
       </div>
       <ContactForm />

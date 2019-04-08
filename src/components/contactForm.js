@@ -3,43 +3,35 @@ import React, { useState, useEffect } from "react"
 import styled from "@emotion/styled"
 import { css } from "@emotion/core";
 import { Inputs } from "./Inputs";
-import axios from 'axios';
-
 
 const ContactForm = ({ }) => {
-    const API_PATH = 'http://rasmuswurm.dev.websterman.se/mailhandler/';
-    const [name, setName] = useState('');
-    const [email, setEmail] = useState('');
-    const [message, setMessage] = useState('');
-    useEffect(() => {
-        // Update the document title using the browser API
-        document.title = `You clicked ${name} times`;
-      });
-     const handleFormSubmit = (e) => {
-        e.preventDefault();
-        console.log(name, email, message)
-        axios({
-            method: 'post',
-            url: `${API_PATH}`,
-            headers: { 'content-type': 'application/json' },
-            data: {
-                 name:name,
-                 email:email,
-                 message:message 
-            }
-        })
-            .then(result => {
-                console.log(result)
-            })
-            .catch(error => console.log(error));
-    };
+   
+    const [form, setForm] = useState({
+        name: '',
+        email: '',
+        message: '',
+        buttonText: 'Skicka'
+    });
+    const updateFormState = event => {
+        setForm({ ...form, [event.target.name]: event.target.value });
+    }
+    const resetForm = e => {
+        setForm({        name: '',
+        email: '',
+        message: '',
+        buttonText: 'Formulär Skickat'})
+
+    }
+    const handleFormSubmit = (e) => {
+    /*     e.preventDefault();
+     */   };
     return (
-        <form onSubmit = {handleFormSubmit} >
-            <Inputs required={true} label="Namn" name="name" type="text" value={name} changeHandler={e => setName(e.target.value)} />
-            <Inputs required={true} label="E-post" name="epost" type="email" value={email} changeHandler={e => setEmail(e.target.value)} />
-            <Inputs required={true} label="Meddelande" name="message" type="textarea" value={message} changeHandler={e => setMessage(e.target.value)} />
-            <Inputs type="submit" label="Skicka"  />
-           
+        <form netlify onSubmit={handleFormSubmit} >
+            <Inputs required={true} label="Namn" name="name" type="text" value={form.name} changeHandler={updateFormState} />
+            <Inputs required={true} label="E-post" name="email" type="email" value={form.email} changeHandler={updateFormState} />
+            <Inputs required={true} label="Meddelande" name="message" type="textarea" value={form.message} changeHandler={updateFormState} />
+            <Inputs type="submit" label={form.buttonText} />
+
         </form>
     )
 };
