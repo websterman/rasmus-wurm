@@ -1,9 +1,8 @@
 import PropTypes from "prop-types"
 import React from "react"
 import styled from "@emotion/styled"
-import { css } from "@emotion/core";
 import  HeaderLogo  from '../images/Logo_Lila.svg';
-import Menu from './menu';
+import {Link} from 'gatsby';
 const LogoContainer = styled.div`
 background: white;
 text-align: center;
@@ -16,8 +15,8 @@ const Header = ({ siteTitle }) => (
   
   <header>
     {console.log({HeaderLogo})}
-    <LogoContainer><Logo src={HeaderLogo} height= "100%"/></LogoContainer>
-    <Menu />
+    <LogoContainer><Link to="/"><Logo src={HeaderLogo} height= "100%"/></Link></LogoContainer>
+   
   </header>
 )
 

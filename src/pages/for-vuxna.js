@@ -5,6 +5,7 @@ import { css } from "@emotion/core"
 import Header from '../components/header';
 import BG from '../images/Bokeh_vuxen.jpg';
 import curtains from '../images/curtains.jpg';
+import Footer from '../components/footer';
 
 const TextBox = styled.div`
 color: white;
@@ -22,24 +23,23 @@ const IntroBox = styled.div `
     padding-top: 34%;
     background-size: cover;
     background-position: center center;
-
-`;
-const IntroText = styled.div `
-    color: white;
+    > div {
+      color: white;
     text-align: center;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);`;
+    transform: translate(-50%, -50%);
+    }
 
+`;
+    
 const Row = styled.div `
     position: relative;
     display: flex;
     align-items: stretch;
     `;
 
-const ImgBox = styled.div `
-`;
 
 const OrderLeft = css `
     order: 1;
@@ -59,10 +59,10 @@ const AdultImg = styled.img `
   return (
     <div>
         <Header />
-        <IntroBox className="intro-container"><IntroText>
+        <IntroBox className="intro-container"><div className = "IntroText">
         <h2>{data.wordpressPage.acf.intro.intro_titel}</h2>
         <p dangerouslySetInnerHTML={{__html: data.wordpressPage.acf.intro.intro_content}} />
-        </IntroText>
+        </div>
         </IntroBox>
 
         {data.wordpressPage.acf.row.map( (aRow, index) => {
@@ -76,59 +76,17 @@ const AdultImg = styled.img `
             return <Row key={index} className="adult-box">
             <div css={imgClass} className="image-container"><AdultImg src={aRow.row_image.localFile.childImageSharp.original.src} /></div><TextBox css={textClass}><div><h1>{aRow.row_text.row_title}</h1><p dangerouslySetInnerHTML={{__html: aRow.row_text.row_content}}/></div></TextBox></Row>
         })}
+        <Footer />
  </div>
     )
 }
 export default ForAdults;
 
-/* export const query = graphql`
-query staticFrontPage($frontpage_id: Int = 2){
- 	
-  wordpressPage (wordpress_id: {eq: $frontpage_id}){
-   id
-      wordpress_id
-      date
-      guid
-      modified
-      slug
-      status
-      type
-      link
-      title
-      content  
-         acf {
-          
-          bakgrund {
-            localFile {
-              childImageSharp {
-                original {
-                  src
-                }
-              }
-            }
-            
-          }
-        }
-
-}
-}`; */
 export const adults = graphql`
 query ($adultpage: Int = 25) {
- 	
     wordpressPage (wordpress_id: {eq: $adultpage}) {
      id
-        wordpress_id
-        date
-        guid
-        modified
-        slug
-        status
-        type
-        link
-        title
-        content  
-           acf {
-            
+           acf { 
             intro {
               intro_titel
               intro_content
