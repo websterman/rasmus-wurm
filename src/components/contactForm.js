@@ -24,13 +24,17 @@ const ContactForm = ({ }) => {
     const  handleSuccess = event => {
         resetForm();
     }
+    const encode = (data) => {
+        return Object.keys(data)
+            .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+            .join("&");
+      }
     const handleSubmit = event => {
         alert('ys')
         fetch('/for-vuxna?no-cache=1', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: 
-           form 
+          body: encode({ "form-name": "contact", ...form })
         })
           .then(handleSuccess)
           .catch(error => alert(error))
