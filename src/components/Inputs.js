@@ -19,7 +19,7 @@ export class Inputs extends React.Component {
             break;
         case 'submit':
             return (<div className={`input-field input-${this.props.type}`} >
-                <Button  >{this.props.label}</Button>
+                <Button  type="submit">{this.props.label}</Button>
             </div>);
             break;
         default:

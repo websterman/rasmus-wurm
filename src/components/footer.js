@@ -33,8 +33,8 @@ const Footer = ({ siteTitle }) => (
   
   <StyledFooter> 
     <div><Typography variant="h4">Rasmus Wurm</Typography>
-    <Typography variant ="p">+46 70 398 09 82</Typography>
-    <a href="mailto:info@rasmuswurm.se"><Typography variant="p">info@rasmuswurm.se</Typography></a>
+    <Typography variant ="body1">+46 70 398 09 82</Typography>
+    <a href="mailto:info@rasmuswurm.se"><Typography variant="body1">info@rasmuswurm.se</Typography></a>
     <h3></h3>
       </div>
       <ContactForm />
