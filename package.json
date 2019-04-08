@@ -20,8 +20,6 @@
     "gatsby-source-filesystem": "^2.0.28",
     "gatsby-source-wordpress": "^3.0.51",
     "gatsby-transformer-sharp": "^2.1.17",
-    "nodemailer": "^6.1.0",
-    "nodemailer-smtp-transport": "^2.7.4",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",

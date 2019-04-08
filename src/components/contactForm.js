@@ -1,11 +1,8 @@
-import PropTypes from "prop-types"
-import React, { useState, useEffect } from "react"
-import styled from "@emotion/styled"
-import { css } from "@emotion/core";
+import React, { useState } from "react"
 import { Inputs } from "./Inputs";
 
 const ContactForm = ({ }) => {
-   
+
     const [form, setForm] = useState({
         name: '',
         email: '',
@@ -16,13 +13,16 @@ const ContactForm = ({ }) => {
         setForm({ ...form, [event.target.name]: event.target.value });
     }
     const resetForm = e => {
-        setForm({        name: '',
-        email: '',
-        message: '',
-        buttonText: 'Formulär Skickat'})
+        setForm({
+            name: '',
+            email: '',
+            message: '',
+            buttonText: 'Formulär Skickat'
+        })
 
     }
     const handleFormSubmit = (e) => {
+        console.log(e);
     /*     e.preventDefault();
      */   };
     return (
