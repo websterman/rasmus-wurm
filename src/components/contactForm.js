@@ -26,7 +26,8 @@ const ContactForm = ({ }) => {
     /*     e.preventDefault();
      */   };
     return (
-        <form netlify onSubmit={handleFormSubmit} >
+        <form name="Kontakt" onSubmit={handleFormSubmit} method="post" data-netlify="true" data-netlify-honeypot="bot-field" >
+            <input type="hidden" name="Kontakt"></input>
             <Inputs required={true} label="Namn" name="name" type="text" value={form.name} changeHandler={updateFormState} />
             <Inputs required={true} label="E-post" name="email" type="email" value={form.email} changeHandler={updateFormState} />
             <Inputs required={true} label="Meddelande" name="message" type="textarea" value={form.message} changeHandler={updateFormState} />
