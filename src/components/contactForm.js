@@ -42,8 +42,9 @@ const ContactForm = ({ }) => {
       }
       
     return (
-        <form name="Kontakt" netlify  data-netlify="true" onSubmit={handleSubmit} >
+        <form name="Kontakt" method ="post" netlify  data-netlify="true" onSubmit={handleSubmit} >
             <input type="hidden" name="form-name" value="Kontakt"></input>
+            
             <Inputs required={true} label="Namn" name="name" type="text" value={form.name} changeHandler={updateFormState} />
             <Inputs required={true} label="E-post" name="email" type="email" value={form.email} changeHandler={updateFormState} />
             <Inputs required={true} label="Meddelande" name="message" type="textarea" value={form.message} changeHandler={updateFormState} />
