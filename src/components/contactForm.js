@@ -31,7 +31,7 @@ const ContactForm = ({ }) => {
       }
     const handleSubmit = event => {
         alert('ys')
-        fetch('/for-vuxna?no-cache=1', {
+        fetch('/', {
           method: 'POST',
           headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
           body: encode({ "form-name": "contact", ...form })
