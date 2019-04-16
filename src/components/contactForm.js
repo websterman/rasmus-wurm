@@ -1,14 +1,14 @@
 import React, { useState } from "react"
 import { Inputs } from "./Inputs";
-
+import axios from 'axios';
 const ContactForm = ({ }) => {
 
     const [form, setForm] = useState({
         name: '',
         email: '',
-        message: '',
-        buttonText: 'Skicka'
+        message: ''
     });
+    const [buttonText, setButtonText] = useState('Skicka')
     const updateFormState = event => {
         setForm({ ...form, [event.target.name]: event.target.value });
     }
@@ -16,9 +16,9 @@ const ContactForm = ({ }) => {
         setForm({
             name: '',
             email: '',
-            message: '',
-            buttonText: 'Formulär Skickat'
+            message: ''
         })
+        setButtonText('Formulär Skickat')
 
     }
     const  handleSuccess = event => {
@@ -29,26 +29,30 @@ const ContactForm = ({ }) => {
             .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
             .join("&");
       }
-    const handleSubmit = event => {
-        alert('ys')
-        fetch('/', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-          body: encode({ "form-name": "contact", ...form })
+    const handleSubmit = e => {
+               e.preventDefault();
+        console.log(form)
+        axios({
+            method: 'post',
+            url: `http://rasmuswurm.dev.websterman.se/mailhandler/`,
+            headers: { 'content-type': 'application/json' },
+            data: form
         })
-          .then(handleSuccess)
-          .catch(error => alert(error))
-        event.preventDefault()
+            .then(result => {
+                console.log(result);
+                handleSuccess();
+            })
+            .catch(error => console.log(error));
       }
       
     return (
-        <form name="Kontakt" method ="post" netlify  data-netlify="true" onSubmit={handleSubmit} >
+        <form name="Kontakt" method ="post" action="https://hooks.zapier.com/hooks/catch/4776849/7mizyj/" onSubmit={handleSubmit} >
             <input type="hidden" name="form-name" value="Kontakt"></input>
             
             <Inputs required={true} label="Namn" name="name" type="text" value={form.name} changeHandler={updateFormState} />
             <Inputs required={true} label="E-post" name="email" type="email" value={form.email} changeHandler={updateFormState} />
             <Inputs required={true} label="Meddelande" name="message" type="textarea" value={form.message} changeHandler={updateFormState} />
-            <Inputs type="submit" label={form.buttonText} />
+            <Inputs type="submit" label={buttonText} />
 
         </form>
     )
