@@ -4,10 +4,11 @@ import styled from "@emotion/styled"
 import { css } from "@emotion/core";
 import ContactForm from "./contactForm";
 import Typography from '@material-ui/core/Typography';
-
+import Bubbles from './bubbles';
 
 const StyledFooter = styled.div`
   display: flex;
+  position: relative;
   padding: 27px 60px;
   background: white;
     > div, > form {
@@ -30,15 +31,15 @@ const StyledFooter = styled.div`
   } 
 `;
 const Footer = ({ siteTitle }) => (
-  
-  <StyledFooter> 
+
+  <StyledFooter>
     <div><Typography variant="h4">Rasmus Wurm</Typography>
-    <Typography variant ="body1">+46 70 398 09 82</Typography>
-    <a href="mailto:info@rasmuswurm.se"><Typography variant="body1">info@rasmuswurm.se</Typography></a>
-    <h3></h3>
-      </div>
-      <ContactForm />
-      
+      <Typography variant="body1">+46 70 398 09 82</Typography>
+      <a href="mailto:info@rasmuswurm.se"><Typography variant="body1">info@rasmuswurm.se</Typography></a>
+      <h3></h3>
+    </div>
+    <ContactForm />
+    <Bubbles amount="10" />
   </StyledFooter>
 )
 

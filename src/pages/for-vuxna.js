@@ -7,7 +7,7 @@ import BG from '../images/Bokeh_vuxen.jpg';
 import curtains from '../images/curtains.jpg';
 import Footer from '../components/footer';
 import BubbleImg from '../images/bubble.png';
-
+import Bubbles from '../components/bubbles';
 const TextBox = styled.div`
 color: white;
     background-image: url(${BG});
@@ -55,34 +55,6 @@ const AdultImg = styled.img`
     margin: 0;
     display: block;`;
 const ForAdults = ({ data }) => {
-  var parallaxEls;
-  useEffect(() => {
-
-    parallaxEls = document.querySelectorAll("[data-speed]");
-    window.addEventListener("scroll", scrollHandler);
-
-  }, [])
-
-
-  function scrollHandler() {
-
-    for (const parallaxEl of parallaxEls) {
-      const direction = parallaxEl.dataset.direction == "up" ? "-" : "";
-      const transformY = this.pageYOffset * parallaxEl.dataset.speed;
-      if (parallaxEl.classList.contains("banner-title")) {
-        parallaxEl.style.transform = `translate3d(0,${direction}${transformY}px,0) rotate(-6deg)`;
-      } else if (parallaxEl.classList.contains("banner-subtitle")) {
-        parallaxEl.style.transform = `translate3d(0,${direction}${transformY}px,0) rotate(-3deg)`;
-      } else {
-        parallaxEl.style.transform = `translate3d(0,${direction}${transformY}px,0)`;
-      }
-    }
-  }
-
-  const Bubble = styled.img`
-    opacity: .15;
-    position: absolute;
-    top: -60px;`
   return (
     <div>
       <Header />
@@ -100,8 +72,7 @@ const ForAdults = ({ data }) => {
           imgClass = OrderRight;
           textClass = OrderLeft;
         }
-        const bubbleNo = [0, 1, 2, 3, 4,5 ,6,7,8,9,10];
-        return <Row key={index} className="adult-box">{bubbleNo.map(b => { return <Bubble key={b} className="bubbl" style={{ width: 3 + Math.random() * 6 + "%", left: `${Math.random() * 100}%`, top: `${Math.random() * 100}%` }} data-speed={+ Math.random().toFixed(1) * .6} data-direction="up" src={BubbleImg} /> })}
+        return <Row key={index} className="adult-box"><Bubbles amount="6" />
           <div css={imgClass} className="image-container"><AdultImg src={aRow.row_image.localFile.childImageSharp.original.src} /></div><TextBox css={textClass}><div><h1>{aRow.row_text.row_title}</h1><p dangerouslySetInnerHTML={{ __html: aRow.row_text.row_content }} /></div></TextBox></Row>
       })}
       <Footer />
