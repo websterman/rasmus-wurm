@@ -39,7 +39,7 @@ const Footer = ({ siteTitle }) => (
       <h3></h3>
     </div>
     <ContactForm />
-    <Bubbles amount="10" />
+    <Bubbles amount="6" />
   </StyledFooter>
 )
 

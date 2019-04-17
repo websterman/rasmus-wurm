@@ -72,8 +72,8 @@ const ForAdults = ({ data }) => {
           imgClass = OrderRight;
           textClass = OrderLeft;
         }
-        return <Row key={index} className="adult-box"><Bubbles amount="6" />
-          <div css={imgClass} className="image-container"><AdultImg src={aRow.row_image.localFile.childImageSharp.original.src} /></div><TextBox css={textClass}><div><h1>{aRow.row_text.row_title}</h1><p dangerouslySetInnerHTML={{ __html: aRow.row_text.row_content }} /></div></TextBox></Row>
+        return <Row key={index} className="adult-box"><Bubbles amount="5" />
+          <div css={imgClass} className="image-container"><AdultImg src={aRow.row_image.localFile.childImageSharp.original.src} /></div><TextBox css={textClass}><div><h1>{console.log(aRow)} {aRow.row_text.row_title}</h1><p dangerouslySetInnerHTML={{ __html: aRow.row_text.row_content }} /></div></TextBox></Row>
       })}
       <Footer />
     </div>
