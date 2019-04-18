@@ -61,7 +61,7 @@ const ForAdults = ({ data }) => {
       <Header />
       <IntroBox className="intro-container"><div className="IntroText">
         <h2>{data.wordpressPage.acf.intro.intro_titel}</h2>
-        <p dangerouslySetInnerHTML={{ __html: data.wordpressPage.acf.intro.intro_content.replace(/<p>/g, '<div>').replace(/<\/p>/g, '</div>') }} />
+        <div dangerouslySetInnerHTML={{ __html: data.wordpressPage.acf.intro.intro_content.replace(/<p>/g, '<div>').replace(/<\/p>/g, '</div>') }} />
       </div>
       </IntroBox>
 
@@ -74,7 +74,7 @@ const ForAdults = ({ data }) => {
           textClass = OrderLeft;
         }
         return <Row key={index} className="adult-box"><Bubbles amount="5" />
-          <div css={imgClass} className="image-container"><AdultImg src={aRow.row_image.localFile.childImageSharp.original.src} /></div><TextBox css={textClass}><div><h1>{console.log(aRow)} {aRow.row_text.row_title}</h1><p dangerouslySetInnerHTML={{ __html: aRow.row_text.row_content.replace(/<p>/g, '<div>').replace(/<\/p>/g, '</div>') }} /></div></TextBox></Row>
+          <div css={imgClass} className="image-container"><AdultImg src={aRow.row_image.localFile.childImageSharp.original.src} /></div><TextBox css={textClass}><div><h1>{console.log(aRow)} {aRow.row_text.row_title}</h1><div dangerouslySetInnerHTML={{ __html: aRow.row_text.row_content.replace(/<p>/g, '<div>').replace(/<\/p>/g, '</div>') }} /></div></TextBox></Row>
       })}
       <Footer />
     </div>
