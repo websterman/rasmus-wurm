@@ -8,6 +8,7 @@ import curtains from '../images/curtains.jpg';
 import Footer from '../components/footer';
 import BubbleImg from '../images/bubble.png';
 import Bubbles from '../components/bubbles';
+import '../components/layout.css'
 const TextBox = styled.div`
 color: white;
     background-image: url(${BG});

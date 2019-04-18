@@ -26,10 +26,10 @@ const Bubbles = (props) => {
         for (const parallaxEl of parallaxEls) {
             const direction = parallaxEl.dataset.direction == "up" ? "-" : "";
             const transformY = this.pageYOffset * parallaxEl.dataset.speed;
-            var xOffset = Math.cos(this.pageYOffset / 200) * 15;
-            var scaleX = 1.1 + (xOffset / 130);
-            var scaleY = 1.1 - (Math.cos(xOffset) / 120);
-            console.log(scaleY)
+            var xOffset = Math.cos(this.pageYOffset / 200) * 15 * parallaxEl.dataset.seed;
+            var scaleX = 1 + (xOffset / 130);
+            var scaleY = 1.2 - (Math.cos(xOffset * 2) / 120);
+            console.log(parallaxEl.dataset.seed)
             if (parallaxEl.classList.contains("banner-title")) {
                 parallaxEl.style.transform = `translate3d(0,${direction}${transformY}px,0) rotate(-6deg)`;
             } else if (parallaxEl.classList.contains("banner-subtitle")) {
@@ -53,7 +53,7 @@ const Bubbles = (props) => {
     return (
         <>
             {amount.map(n => {
-                return <Bubble src={BubbleImg} key={n} className="bubbl" style={{ width: 3 + Math.random() * 6 + "%", left: `${Math.random() * 91}%`, top: `${Math.random() * 100}%` }} data-speed={0.1 + Math.random().toFixed(1) * .5} data-direction="up" />
+                return <Bubble src={BubbleImg} key={n} className="bubbl" style={{ width: 3 + Math.random() * 6 + "%", left: `${Math.random() * 91}%`, top: `${Math.random() * 100}%` }} data-seed={.3 + Math.random() / 3} data-speed={0.1 + Math.random().toFixed(1) * .5} data-direction="up" />
             })}
         </>
     )
