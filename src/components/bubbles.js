@@ -26,9 +26,10 @@ const Bubbles = (props) => {
         for (const parallaxEl of parallaxEls) {
             const direction = parallaxEl.dataset.direction == "up" ? "-" : "";
             const transformY = this.pageYOffset * parallaxEl.dataset.speed;
-            var xOffset = Math.cos(this.pageYOffset / 200) * 15 * parallaxEl.dataset.seed;
-            var scaleX = 1 + (xOffset / 130);
-            var scaleY = 1.2 - (Math.cos(xOffset * 2) / 120);
+            let offset = Math.cos(this.pageYOffset / 200);
+            var xOffset = offset * 150 * parallaxEl.dataset.seed;
+            var scaleX = 1 + (offset / 130);
+            var scaleY = 1.2 - (Math.cos(offset * 2) / 120);
             if (parallaxEl.classList.contains("banner-title")) {
                 parallaxEl.style.transform = `translate3d(0,${direction}${transformY}px,0) rotate(-6deg)`;
             } else if (parallaxEl.classList.contains("banner-subtitle")) {

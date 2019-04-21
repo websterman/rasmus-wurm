@@ -9,6 +9,8 @@ import Footer from '../components/footer';
 import BubbleImg from '../images/bubble.png';
 import Bubbles from '../components/bubbles';
 import '../components/layout.css'
+import {isMobile} from 'react-device-detect';
+
 const TextBox = styled.div`
     color: white;
     background-image: url(${BG});
@@ -22,9 +24,10 @@ const TextBox = styled.div`
       width: 100%;
       display: block;
       padding: 10px 20px;
-      -webkit-text-stroke: 1px purple;
       > div > h1 {
         text-align: center;
+        -webkit-text-stroke: 1px purple;
+
       }
       > div > div {
         position: absolute; 
@@ -93,10 +96,11 @@ const AdultImg = styled.img`
     display: block;`;
 const ForAdults = ({ data }) => {
   useEffect(() => {
+    if(isMobile){
     let textBoxes = document.querySelectorAll(".textbox");
     for ( let textbox of textBoxes ) {
-      textbox.style.height= textbox.clientWidth*1.3333334+'px';
-    }
+      textbox.style.height= (textbox.clientWidth*1.3333334 )+'px';
+    }}
   }, [])
   return (
     <div>
