@@ -10,12 +10,30 @@ import BubbleImg from '../images/bubble.png';
 import Bubbles from '../components/bubbles';
 import '../components/layout.css'
 const TextBox = styled.div`
-color: white;
+    color: white;
     background-image: url(${BG});
     display: flex;
     justify-content: center;
     align-items: center;
-    
+    @media (max-device-width: 768px ) {
+      background-image: none;
+      position: absolute;
+      top: 0;
+      width: 100%;
+      display: block;
+      padding: 10px 20px;
+      -webkit-text-stroke: 1px purple;
+      > div > h1 {
+        text-align: center;
+      }
+      > div > div {
+        position: absolute; 
+        bottom: 0px;
+        width: 100%;
+        left: 0px;
+        padding: 10px 20px;
+      }
+    }
 `;
 
 const IntroBox = styled.div`
@@ -33,6 +51,18 @@ const IntroBox = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     }
+    @media (max-device-width: 768px ) {
+      padding-top:0%;
+      padding: 20px 40px;
+      height: auto;
+      >div {
+        width: 100%;
+        position: relative;
+        top: 0;
+        left: 0;
+        transform: none;
+      }
+    }
 
 `;
 
@@ -40,6 +70,12 @@ const Row = styled.div`
     position: relative;
     display: flex;
     align-items: stretch;
+    @media (max-device-width: 768px ) {
+      display: blocK;
+      > .image-container {
+        width: 100%;
+      }
+    }
     `;
 
 
@@ -56,6 +92,12 @@ const AdultImg = styled.img`
     margin: 0;
     display: block;`;
 const ForAdults = ({ data }) => {
+  useEffect(() => {
+    let textBoxes = document.querySelectorAll(".textbox");
+    for ( let textbox of textBoxes ) {
+      textbox.style.height= textbox.clientWidth*1.3333334+'px';
+    }
+  }, [])
   return (
     <div>
       <Header />
@@ -68,13 +110,13 @@ const ForAdults = ({ data }) => {
       {data.wordpressPage.acf.row.map((aRow, index) => {
         let imgClass = OrderLeft;
         let textClass = OrderRight;
-        console.log(aRow);
+    
         if (index % 2 === 1) {
           imgClass = OrderRight;
           textClass = OrderLeft;
         }
         return <Row key={index} className="adult-box"><Bubbles amount="5" />
-          <div css={imgClass} className="image-container"><AdultImg src={aRow.row_image.localFile.childImageSharp.original.src} /></div><TextBox css={textClass}><div><h1>{console.log(aRow)} {aRow.row_text.row_title}</h1><div dangerouslySetInnerHTML={{ __html: aRow.row_text.row_content.replace(/<p>/g, '<div>').replace(/<\/p>/g, '</div>') }} /></div></TextBox></Row>
+          <div css={imgClass} className="image-container"><AdultImg src={aRow.row_image.localFile.childImageSharp.original.src} /></div><TextBox className="textbox" css={textClass}><div><h1>{aRow.row_text.row_title}</h1><div dangerouslySetInnerHTML={{ __html: aRow.row_text.row_content.replace(/<p>/g, '<div>').replace(/<\/p>/g, '</div>') }} /></div></TextBox></Row>
       })}
       <Footer />
     </div>

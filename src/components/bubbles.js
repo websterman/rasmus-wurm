@@ -29,7 +29,6 @@ const Bubbles = (props) => {
             var xOffset = Math.cos(this.pageYOffset / 200) * 15 * parallaxEl.dataset.seed;
             var scaleX = 1 + (xOffset / 130);
             var scaleY = 1.2 - (Math.cos(xOffset * 2) / 120);
-            console.log(parallaxEl.dataset.seed)
             if (parallaxEl.classList.contains("banner-title")) {
                 parallaxEl.style.transform = `translate3d(0,${direction}${transformY}px,0) rotate(-6deg)`;
             } else if (parallaxEl.classList.contains("banner-subtitle")) {
@@ -44,12 +43,10 @@ const Bubbles = (props) => {
 
 
     const Bubble = styled.img`
-    opacity: .15;
+    opacity: .5;
     position: absolute;
     top: -60px;`
     const [amount, setAmount] = useState([]);
-
-    console.log(amount)
     return (
         <>
             {amount.map(n => {

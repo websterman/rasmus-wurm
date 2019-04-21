@@ -29,6 +29,9 @@ const StyledFooter = styled.div`
   > div > p {
     margin: 20px 0;
   } 
+  @media (max-device-width: 768px) {
+    display: block;
+  }
 `;
 const Footer = ({ siteTitle }) => (
 

@@ -19,11 +19,15 @@ const IndexPage = ({ data }) => {
   const FrontPageMenu = styled.div`
   perspective: 600px;
     position: absolute;
-    width: 27%;
+    width: 60%;
     height: 50%;
     left: 47%;
     top:42%;
     transform: translateY(-50%);
+    @media (max-device-width: 768px) {
+      width: 80%;
+      left:17%;
+    }
   `;
   const CenteredParagraph = css`
   text-align:center;
