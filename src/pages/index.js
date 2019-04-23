@@ -19,7 +19,7 @@ const IndexPage = ({ data }) => {
   const FrontPageMenu = styled.div`
   perspective: 600px;
     position: absolute;
-    width: 60%;
+    width: 40%;
     height: 50%;
     left: 47%;
     top:42%;
