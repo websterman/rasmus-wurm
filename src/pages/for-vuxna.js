@@ -94,6 +94,9 @@ const AdultImg = styled.img`
     width: 100%;
     margin: 0;
     display: block;`;
+    const PageWrap = styled.div `
+overflow: hidden;
+`
 const ForAdults = ({ data }) => {
   useEffect(() => {
     if(isMobile){
@@ -103,7 +106,7 @@ const ForAdults = ({ data }) => {
     }}
   }, [])
   return (
-    <div>
+    <PageWrap>
       <Header />
       <IntroBox className="intro-container"><div className="IntroText">
         <h2>{data.wordpressPage.acf.intro.intro_titel}</h2>
@@ -123,7 +126,7 @@ const ForAdults = ({ data }) => {
           <div css={imgClass} className="image-container"><AdultImg src={aRow.row_image.localFile.childImageSharp.original.src} /></div><TextBox className="textbox" css={textClass}><div><h1>{aRow.row_text.row_title}</h1><div dangerouslySetInnerHTML={{ __html: aRow.row_text.row_content.replace(/<p>/g, '<div>').replace(/<\/p>/g, '</div>') }} /></div></TextBox></Row>
       })}
       <Footer />
-    </div>
+    </PageWrap>
   )
 }
 export default ForAdults;

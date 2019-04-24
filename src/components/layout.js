@@ -11,8 +11,10 @@ import { StaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
-import Helmet from 'react-helmet'
-
+import styled from '@emotion/styled';
+const PageWrap = styled.div `
+overflow: hidden;
+`
 const Layout = ({ children }) => (
   <StaticQuery
     query={graphql`
@@ -25,11 +27,7 @@ const Layout = ({ children }) => (
       }
     `}
     render={data => (
-      <>
-        <Helmet>
-          <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" />
-
-        </Helmet>
+      <PageWrap>
         <Header siteTitle={data.site.siteMetadata.title} />
         <div
           style={{
@@ -46,7 +44,7 @@ const Layout = ({ children }) => (
             <a href="https://www.gatsbyjs.org">Gatsby</a>
           </footer>
         </div>
-      </>
+      </PageWrap>
     )}
   />
 )
