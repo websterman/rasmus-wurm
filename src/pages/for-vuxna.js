@@ -135,11 +135,14 @@ const ForAdults = ({ data }) => {
         }
         return (
           <Row key={index} className="adult-box">
-            <Bubbles amount="5" />
+            <Bubbles amount="3" />
             <div css={imgClass} className="image-container">
-              <AdultImg
-                src={aRow.row_image.localFile.childImageSharp.original.src}
-              />
+              {console.log(aRow)}
+              {aRow.row_image && (
+                <AdultImg
+                  src={aRow.row_image.localFile.childImageSharp.original.src}
+                />
+              )}
             </div>
             <TextBox className="textbox" css={textClass}>
               <div>
