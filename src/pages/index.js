@@ -2,11 +2,10 @@ import React from "react";
 import { Link, graphql } from "gatsby";
 import styled from "@emotion/styled";
 import { css } from "@emotion/core";
-import Layout from "../components/layout";
 import SEO from "../components/seo";
 import Logo from "../images/Logo_Vit.svg";
 import { Typography } from "@material-ui/core";
-
+import { Helmet } from "react-helmet";
 const IndexPage = ({ data }) => {
   const Bg = styled.div`
     background-image: url(${data.wordpressPage.acf.bakgrund.localFile
@@ -67,7 +66,10 @@ const IndexPage = ({ data }) => {
   `;
   return (
     <Bg>
-      <SEO title="Home" keywords={[`gatsby`, `application`, `react`]} />
+      <SEO
+        title="Razmataz - Ny underhållning för stora och småome"
+        keywords={[`gatsby`, `application`, `react`]}
+      />
       <FrontPageMenu>
         <img className="logo" css={LogoCSSStart} src={Logo} />
         <Link to="/for-vuxna">
@@ -85,7 +87,7 @@ const IndexPage = ({ data }) => {
             />
           </svg>
         </Link>
-        <a href="http://wurm.se">
+        <Link to="/familj">
           <svg
             className="mustasch"
             css={[AgeButton, Younger]}
@@ -99,7 +101,7 @@ const IndexPage = ({ data }) => {
               id="path4"
             />
           </svg>
-        </a>
+        </Link>
         {
           <Typography variant="body1" css={CenteredParagraph}>
             Välj målgrupp

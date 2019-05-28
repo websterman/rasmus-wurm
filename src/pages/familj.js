@@ -7,7 +7,6 @@ import BG from "../images/Bokeh_vuxen.jpg";
 import curtains from "../images/curtains.jpg";
 import Footer from "../components/footer";
 import SEO from "../components/seo";
-import BubbleImg from "../images/bubble.png";
 import Bubbles from "../components/bubbles";
 import "../components/layout.css";
 import { isMobile } from "react-device-detect";
@@ -101,7 +100,7 @@ const AdultImg = styled.img`
 const PageWrap = styled.div`
   overflow: hidden;
 `;
-const ForAdults = ({ data }) => {
+const Familj = ({ data }) => {
   useEffect(() => {
     if (isMobile) {
       let textBoxes = document.querySelectorAll(".textbox");
@@ -112,7 +111,7 @@ const ForAdults = ({ data }) => {
   }, []);
   return (
     <PageWrap>
-      <SEO tite="Razmataz - Ny underhållning för vuxna" />
+      <SEO tite="Razmataz - Ny underhållning för familjer" />
       <Header />
       <IntroBox className="intro-container">
         <div className="IntroText">
@@ -163,14 +162,14 @@ const ForAdults = ({ data }) => {
           </a>
         );
       })}
-      <Footer origin="Vuxna" />
+      <Footer origin="Familj" />
     </PageWrap>
   );
 };
-export default ForAdults;
+export default Familj;
 
 export const adults = graphql`
-  query($adultpage: Int = 25) {
+  query($adultpage: Int = 64) {
     wordpressPage(wordpress_id: { eq: $adultpage }) {
       id
       acf {
@@ -192,7 +191,6 @@ export const adults = graphql`
             row_title
             row_content
           }
-          row_hashtag
         }
       }
     }
