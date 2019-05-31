@@ -118,7 +118,7 @@ const ForAdults = ({ data }) => {
   }, []);
   return (
     <PageWrap>
-      <SEO tite="Razmataz - Ny underhållning för vuxna" />
+      <SEO title="Razmataz - Ny underhållning för vuxna" />
       <Header />
       <IntroBox className="intro-container">
         <div className="IntroText">
@@ -146,7 +146,11 @@ const ForAdults = ({ data }) => {
             css={NoDecoration}
             href={`http://instagram.com/explore/tags/${aRow.row_hashtag}`}
           >
-            <Row key={index} className="adult-box">
+            <Row
+              key={index}
+              className={`adult-box ${aRow.row_text.row_title == "Om Rasmus" &&
+                "aboutBox"}`}
+            >
               <Bubbles amount="3" />
               <div css={imgClass} className="image-container">
                 {console.log(aRow)}

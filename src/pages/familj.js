@@ -41,7 +41,33 @@ const TextBox = styled.div`
     }
   }
 `;
-
+const AboutBox = styled.div`
+  color: white;
+  background-image: url(${BG});
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  > div > h1 {
+    text-align: center;
+  }
+  @media (max-device-width: 768px) {
+    width: 100%;
+    display: block;
+    padding: 10px 20px;
+    > div > h1 {
+      text-align: center;
+      -webkit-text-stroke: 1px purple;
+    }
+    > div > div {
+      position: absolute;
+      bottom: 0px;
+      width: 100%;
+      left: 0px;
+      padding: 10px 20px;
+    }
+  }
+`;
 const IntroBox = styled.div`
   background-image: url(${curtains});
   height: 0;
@@ -117,7 +143,7 @@ const Familj = ({ data }) => {
   }, []);
   return (
     <PageWrap>
-      <SEO tite="Razmataz - Ny underhållning för familjer" />
+      <SEO title="Razmataz - Ny underhållning för familjer" />
       <Header />
       <IntroBox className="intro-container">
         <div className="IntroText">
@@ -145,7 +171,11 @@ const Familj = ({ data }) => {
             css={NoDecoration}
             href={`http://instagram.com/explore/tags/${aRow.row_hashtag}`}
           >
-            <Row key={index} className="adult-box">
+            <Row
+              key={index}
+              className={`adult-box ${aRow.row_text.row_title == "Om Rasmus" &&
+                "aboutBox"}`}
+            >
               <Bubbles amount="3" />
               <div css={imgClass} className="image-container">
                 {console.log(aRow)}

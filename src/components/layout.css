@@ -719,6 +719,15 @@ pre tt:after {
     content: "";
 }
 
+.aboutBox .textbox {
+    width: 100%;
+    padding: 60px 40px;
+}
+
+.aboutBox .image-container {
+    display: none;
+}
+
 @keyframes Shake {
 
     10%,
