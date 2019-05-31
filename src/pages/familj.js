@@ -74,7 +74,9 @@ const IntroBox = styled.div`
 const Row = styled.div`
   position: relative;
   display: flex;
-* {text-decoration: none; }
+  * {
+    text-decoration: none;
+  }
   align-items: stretch;
   @media (max-device-width: 768px) {
     display: blocK;
@@ -100,6 +102,9 @@ const AdultImg = styled.img`
 `;
 const PageWrap = styled.div`
   overflow: hidden;
+`;
+const NoDecoration = css`
+  text-decoration: none;
 `;
 const Familj = ({ data }) => {
   useEffect(() => {
@@ -136,7 +141,10 @@ const Familj = ({ data }) => {
           textClass = OrderLeft;
         }
         return (
-          <a href={`http://instagram.com/explore/tags/${aRow.row_hashtag}`}>
+          <a
+            css={NoDecoration}
+            href={`http://instagram.com/explore/tags/${aRow.row_hashtag}`}
+          >
             <Row key={index} className="adult-box">
               <Bubbles amount="3" />
               <div css={imgClass} className="image-container">
