@@ -76,6 +76,7 @@ const Row = styled.div`
   position: relative;
   display: flex;
   align-items: stretch;
+text-decoration:none;
   @media (max-device-width: 768px) {
     display: blocK;
     > .image-container {

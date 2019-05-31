@@ -74,6 +74,7 @@ const IntroBox = styled.div`
 const Row = styled.div`
   position: relative;
   display: flex;
+	text-decoration: none;
   align-items: stretch;
   @media (max-device-width: 768px) {
     display: blocK;
